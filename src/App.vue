@@ -1,85 +1,55 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div :class="{ 'dark': darkMode }">
+    <HabitTracker :darkMode="darkMode" />
+    <button @click="toggleDarkMode"
+      class="fixed bottom-4 right-4 bg-gray-300 dark:bg-gray-800 rounded-full w-12 h-12 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800 dark:text-gray-300" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6a6 6 0 100 12 6 6 0 000-12z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 4v.01M12 8v.01M12 12v.01M12 16v.01M6 12h.01M8 12h.01M16 12h.01M18 12h.01" />
+      </svg>
+    </button>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script>
+import { defineComponent, ref, onMounted } from 'vue';
+import HabitTracker from './components/HabitTracker.vue';
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+export default defineComponent({
+  name: 'App',
+  components: {
+    HabitTracker
+  },
+  setup() {
+    const darkMode = ref(false);
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
+    const toggleDarkMode = () => {
+      darkMode.value = !darkMode.value;
+      localStorage.setItem('darkMode', darkMode.value.toString());
+    };
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
+    onMounted(() => {
+      const darkModeSetting = localStorage.getItem('darkMode');
+      if (darkModeSetting !== null) {
+        darkMode.value = darkModeSetting === 'true';
+      }
+    });
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    return {
+      darkMode,
+      toggleDarkMode
+    };
   }
+});
+</script>
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+<style>
+/* Estilos generales de la aplicación */
+.dark {
+  background-color: #1f2937;
+  color: #f9fafb;
 }
+
 </style>
