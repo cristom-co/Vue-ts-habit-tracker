@@ -29,7 +29,7 @@
   </div>
 </template>
 
-<script setup langlang="ts">
+<script setup lang="ts">
   import { ref, onMounted } from 'vue'
   import HabitTracker from './components/HabitTracker.vue'
 

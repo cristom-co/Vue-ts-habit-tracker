@@ -69,7 +69,7 @@ function toggleHabitComplete(index: number) {
   saveHabits()
 }
 
-computed(() => {
+ const totalDays = computed(() => {
   const dates = habits.value.map((habit) => new Date(habit.date).toLocaleDateString())
   const uniqueDates = [...new Set(dates)]
   return uniqueDates.length

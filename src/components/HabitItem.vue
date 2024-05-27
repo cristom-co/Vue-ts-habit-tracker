@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import {ref} from "vue"
 
-const props =  defineProps<{habit: string, index: number}>()
+const props =  defineProps<{habit: {name: string, completed: boolean}, index: number}>()
 const emit = defineEmits(['toggle-complete', 'remove']);
 
 function toggleComplete(){
