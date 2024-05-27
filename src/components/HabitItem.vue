@@ -8,26 +8,19 @@
   </li>
 </template>
 
-<script>
-import { defineComponent, ref } from 'vue';
+<script setup lang="ts">
+import {ref} from "vue"
 
-export default defineComponent({
-  props: ['habit', 'index'],
-  setup(props, { emit }) {
-    const toggleComplete = () => {
-      emit('toggle-complete', props.index);
-    };
+const props =  defineProps<{habit: string, index: number}>()
+const emit = defineEmits(['toggle-complete', 'remove']);
 
-    const remove = () => {
-      emit('remove', props.index);
-    };
+function toggleComplete(){
+  emit('toggle-complete', props.index);
+}
 
-    return {
-      toggleComplete,
-      remove
-    };
-  }
-});
+function remove(){
+  emit('remove', props.index);
+}
 </script>
 
 <style scoped>
