@@ -1,61 +1,29 @@
-# habit-tracker
+## Tech Stack
 
-This template should help get you started developing with Vue 3 in Vite.
+**Client:** 
+- Vue (TypeScript), 
+- Pinia (State management), 
+- TailwindCSS (Style)
 
-## Recommended IDE Setup
+## Requirements
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+List of tools required to run the project:
 
-## Type Support for `.vue` Imports in TS
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Installation
 
-## Customize configuration
+Steps to set up the development environment.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### 1. Clone the repository
 
-## Project Setup
-
-```sh
-pnpm install
+```bash
+git clone https://github.com/cristom-co/Vue-typescript-habit-tracker.git
+cd Vue-typescript-habit-tracker
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-pnpm dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-pnpm build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-pnpm test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-pnpm test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-pnpm build
-pnpm test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
+### 2. Build and run the containers
+```bash
+docker-compose up --build
 ```
